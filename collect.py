@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import os
 
-d = {'Name':[], 'Price':[], 'Sold':[]}
+data = {'Name':[], 'Price':[], 'Sold':[]}
 
 for file in os.listdir("data"):
     with open(f"data/{file}", 'r', encoding='utf-8') as f:
@@ -21,9 +21,9 @@ for file in os.listdir("data"):
     #Sold = s.get_text()
     #print(Sold)
     
-    d['Name'].append(Name)
-    d['Price'].append(Price)
-    d['Sold'].append(span_text)
+    data['Name'].append(Name)
+    data['Price'].append(Price)
+    data['Sold'].append(span_text)
 
-df = pd.DataFrame(data=d)
+df = pd.DataFrame(data=data)
 df.to_csv('data.csv')
